@@ -17,3 +17,17 @@ BetterAnvils 是一个 Minecraft Spigot 插件，它重新实现了原版铁砧�
 原作者因未知原因未对此插件进行更新适配
 
 当前已更新适配至 Minecraft 1.21.1-R0.1-SNAPSHOT 并修复了部分不合理的地方（~~稀碎的史山~~）
+
+## 如何使用？
+1. 前往 [Github Releas](https://github.com/ZaoMai/betteranvils/releases) 页面进行下载
+2. 将插件丢进 Minecraft Server Plugins 文件夹
+3. 重启服务器，插件自动生成配置文件
+4. 修改 *./plugins/BetterAnvils/config.yml* 以进行个性化调整，再次重启服务器
+5. 验收，喝茶
+
+## 注意事项
+- 推荐同时搭配 [BoundlessForging](https://github.com/BlurOne-GIT/Boundless-Forging) 以解锁完整体验
+- 由于 Minecraft 本地策略，玩家游玩时依然会提示 [过于昂贵] ，可忽略
+- 原作者留下的锅，我不予处理，比如 enchant-cost-multiplier 配置项，这里更合理的解决方案应当是以乘数倍率计算
+- 配置文件已全局中文注释
+- 不接受任何反馈谢谢
