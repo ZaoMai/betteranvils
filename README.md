@@ -1,20 +1,17 @@
 # BetterAnvils
 
-## Overview
-BetterAnvils is a Minecraft Spigot plugin that reimplements the functionality of the vanilla anvil,
-allowing for greater configuration of the anvil's behavior by server owners and a much more pleasant
-experience for players.
+## 概述
+BetterAnvils 是一个 Minecraft Spigot 插件，它重新实现了原版铁砧的功能，
+使服务器管理员能够对铁砧的行为进行更加细致的配置，同时也为玩家提供了更加友好的使用体验。
 
-## Features
-- Configurable maximum enchant levels for each enchantment (i.e. Fortune V, Sharpness X, etc.)
-- Configurable cost multipliers for enchanting and repairing
-- Configurable maximum enchant/repair level cost (no more *"Too Expensive!"*)
-- Configurable material repair cost
-- Smarter enchant/repair/rename behavior to prevent players from accidentally spending materials, tools,
-or levels on useless operations
+## 功能特性
+- 可为每一种附魔单独配置最大附魔等级（例如：时运 VIII、锋利 X 等）
+- 可配置附魔与修理时的经验消耗倍率
+- 可配置附魔 / 修理的最大经验消耗上限（不再出现 “~~过于昂贵！~~”）
+- 可配置不同材料的修理消耗
+- 更智能的附魔 / 修理 / 重命名逻辑，防止玩家在无意义的操作上浪费材料、工具或经验等级
 
-## Installation
-Download `BetterAnvils.jar` from the latest [GitHub release](https://github.com/lthoerner/betteranvils/releases)
-and place it in your server's `plugins/` directory.
-Once the plugin is installed, you can configure it by editing the `config.yml` file in the `plugins/BetterAnvils/`
-directory.
+# 以上纯原作者页面介绍直译
+本分支来源 [lthoerner](https://github.com/lthoerner/betteranvils)
+原作者因未知原因未对此插件进行更新适配
+当前已更新适配至 Minecraft 1.21.1-R0.1-SNAPSHOT 并修复了部分不合理的地方（~~稀碎的史山~~）
