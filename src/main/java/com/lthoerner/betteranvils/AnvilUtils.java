@@ -385,27 +385,24 @@ class AnvilUtils {
             return DamageableMaterial.WOOD;
         }
 
-        switch (itemType) {
-            case LEATHER:
-                return DamageableMaterial.LEATHER;
-            case COBBLESTONE:
-            case COBBLED_DEEPSLATE:
-            case BLACKSTONE:
-                return DamageableMaterial.STONE;
-            case IRON_INGOT:
-                return DamageableMaterial.IRON;
-            case GOLD_INGOT:
-                return DamageableMaterial.GOLD;
-            case DIAMOND:
-                return DamageableMaterial.DIAMOND;
-            case NETHERITE_INGOT:
-                return DamageableMaterial.NETHERITE;
-            case SCUTE:
-                return DamageableMaterial.SCUTE;
-            case PHANTOM_MEMBRANE:
-                return DamageableMaterial.PHANTOM_MEMBRANE;
-            default:
-                return null;
+        if (itemType == Material.LEATHER) {
+            return DamageableMaterial.LEATHER;
+        } else if (itemType == Material.COBBLESTONE || itemType == Material.COBBLED_DEEPSLATE || itemType == Material.BLACKSTONE) {
+            return DamageableMaterial.STONE;
+        } else if (itemType == Material.IRON_INGOT) {
+            return DamageableMaterial.IRON;
+        } else if (itemType == Material.GOLD_INGOT) {
+            return DamageableMaterial.GOLD;
+        } else if (itemType == Material.DIAMOND) {
+            return DamageableMaterial.DIAMOND;
+        } else if (itemType == Material.NETHERITE_INGOT) {
+            return DamageableMaterial.NETHERITE;
+        } else if (itemType.name().equals("SCUTE")) {
+            return DamageableMaterial.SCUTE;
+        } else if (itemType.name().equals("PHANTOM_MEMBRANE")) {
+            return DamageableMaterial.PHANTOM_MEMBRANE;
+        } else {
+            return null;
         }
     }
 

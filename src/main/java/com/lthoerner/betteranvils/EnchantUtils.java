@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -18,6 +19,56 @@ import static com.lthoerner.betteranvils.AnvilUtils.isDamageable;
 class EnchantUtils {
     static HashMap<Enchantment, Integer> MAX_ENCHANT_LEVELS = new HashMap<>(38);
     static ArrayList<Enchantment[]> INCOMPATIBLE_ENCHANTMENTS = new ArrayList<>(10);
+
+    // Backwards-compatible enchantment references for newer Bukkit versions
+    static final Enchantment DAMAGE_ALL = Enchantment.getByKey(NamespacedKey.minecraft("sharpness"));
+    static final Enchantment DAMAGE_UNDEAD = Enchantment.getByKey(NamespacedKey.minecraft("smite"));
+    static final Enchantment DAMAGE_ARTHROPODS = Enchantment.getByKey(NamespacedKey.minecraft("bane_of_arthropods"));
+    static final Enchantment FIRE_ASPECT = Enchantment.getByKey(NamespacedKey.minecraft("fire_aspect"));
+    static final Enchantment KNOCKBACK = Enchantment.getByKey(NamespacedKey.minecraft("knockback"));
+    static final Enchantment LOOT_BONUS_MOBS = Enchantment.getByKey(NamespacedKey.minecraft("looting"));
+    static final Enchantment SWEEPING_EDGE = Enchantment.getByKey(NamespacedKey.minecraft("sweeping"));
+
+    static final Enchantment IMPALING = Enchantment.getByKey(NamespacedKey.minecraft("impaling"));
+    static final Enchantment RIPTIDE = Enchantment.getByKey(NamespacedKey.minecraft("riptide"));
+    static final Enchantment LOYALTY = Enchantment.getByKey(NamespacedKey.minecraft("loyalty"));
+
+    static final Enchantment ARROW_DAMAGE = Enchantment.getByKey(NamespacedKey.minecraft("power"));
+    static final Enchantment ARROW_FIRE = Enchantment.getByKey(NamespacedKey.minecraft("flame"));
+    static final Enchantment ARROW_KNOCKBACK = Enchantment.getByKey(NamespacedKey.minecraft("punch"));
+    static final Enchantment ARROW_INFINITE = Enchantment.getByKey(NamespacedKey.minecraft("infinity"));
+
+    static final Enchantment PIERCING = Enchantment.getByKey(NamespacedKey.minecraft("piercing"));
+    static final Enchantment QUICK_CHARGE = Enchantment.getByKey(NamespacedKey.minecraft("quick_charge"));
+    static final Enchantment MULTISHOT = Enchantment.getByKey(NamespacedKey.minecraft("multishot"));
+
+    static final Enchantment DIG_SPEED = Enchantment.getByKey(NamespacedKey.minecraft("efficiency"));
+    static final Enchantment LOOT_BONUS_BLOCKS = Enchantment.getByKey(NamespacedKey.minecraft("fortune"));
+    static final Enchantment SILK_TOUCH = Enchantment.getByKey(NamespacedKey.minecraft("silk_touch"));
+
+    static final Enchantment LURE = Enchantment.getByKey(NamespacedKey.minecraft("lure"));
+    static final Enchantment LUCK = Enchantment.getByKey(NamespacedKey.minecraft("luck_of_the_sea"));
+
+    static final Enchantment PROTECTION_ENVIRONMENTAL = Enchantment.getByKey(NamespacedKey.minecraft("protection"));
+    static final Enchantment PROTECTION_FIRE = Enchantment.getByKey(NamespacedKey.minecraft("fire_protection"));
+    static final Enchantment PROTECTION_PROJECTILE = Enchantment.getByKey(NamespacedKey.minecraft("projectile_protection"));
+    static final Enchantment PROTECTION_EXPLOSIONS = Enchantment.getByKey(NamespacedKey.minecraft("blast_protection"));
+    static final Enchantment PROTECTION_FALL = Enchantment.getByKey(NamespacedKey.minecraft("feather_falling"));
+    static final Enchantment THORNS = Enchantment.getByKey(NamespacedKey.minecraft("thorns"));
+    static final Enchantment SOUL_SPEED = Enchantment.getByKey(NamespacedKey.minecraft("soul_speed"));
+    static final Enchantment SWIFT_SNEAK = Enchantment.getByKey(NamespacedKey.minecraft("swift_sneak"));
+    static final Enchantment DEPTH_STRIDER = Enchantment.getByKey(NamespacedKey.minecraft("depth_strider"));
+    static final Enchantment OXYGEN = Enchantment.getByKey(NamespacedKey.minecraft("respiration"));
+    static final Enchantment WATER_WORKER = Enchantment.getByKey(NamespacedKey.minecraft("aqua_affinity"));
+    static final Enchantment FROST_WALKER = Enchantment.getByKey(NamespacedKey.minecraft("frost_walker"));
+
+    static final Enchantment DURABILITY = Enchantment.getByKey(NamespacedKey.minecraft("unbreaking"));
+    static final Enchantment MENDING = Enchantment.getByKey(NamespacedKey.minecraft("mending"));
+
+    static final Enchantment BINDING_CURSE = Enchantment.getByKey(NamespacedKey.minecraft("binding_curse"));
+    static final Enchantment VANISHING_CURSE = Enchantment.getByKey(NamespacedKey.minecraft("vanishing_curse"));
+
+    static final Enchantment CHANNELING = Enchantment.getByKey(NamespacedKey.minecraft("channeling"));
     static {
         Configuration config = BetterAnvils.getInstance().getConfig();
         boolean USE_VANILLA_MAX_LEVELS = config.getBoolean("use-vanilla-max-levels");
@@ -69,94 +120,94 @@ class EnchantUtils {
         int CURSE_OF_BINDING_LEVEL = USE_VANILLA_MAX_LEVELS ? 1 : config.getInt("max-level.curse-of-binding");
         int CURSE_OF_VANISHING_LEVEL = USE_VANILLA_MAX_LEVELS ? 1 : config.getInt("max-level.curse-of-vanishing");
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.DAMAGE_ALL, SHARPNESS_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.DAMAGE_UNDEAD, SMITE_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.DAMAGE_ARTHROPODS, BANE_OF_ARTHROPODS_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.FIRE_ASPECT, FIRE_ASPECT_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.KNOCKBACK, KNOCKBACK_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.LOOT_BONUS_MOBS, LOOTING_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.SWEEPING_EDGE, SWEEPING_EDGE_LEVEL);
+        MAX_ENCHANT_LEVELS.put(DAMAGE_ALL, SHARPNESS_LEVEL);
+        MAX_ENCHANT_LEVELS.put(DAMAGE_UNDEAD, SMITE_LEVEL);
+        MAX_ENCHANT_LEVELS.put(DAMAGE_ARTHROPODS, BANE_OF_ARTHROPODS_LEVEL);
+        MAX_ENCHANT_LEVELS.put(FIRE_ASPECT, FIRE_ASPECT_LEVEL);
+        MAX_ENCHANT_LEVELS.put(KNOCKBACK, KNOCKBACK_LEVEL);
+        MAX_ENCHANT_LEVELS.put(LOOT_BONUS_MOBS, LOOTING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(SWEEPING_EDGE, SWEEPING_EDGE_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.IMPALING, IMPALING_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.RIPTIDE, RIPTIDE_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.LOYALTY, LOYALTY_LEVEL);
+        MAX_ENCHANT_LEVELS.put(IMPALING, IMPALING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(RIPTIDE, RIPTIDE_LEVEL);
+        MAX_ENCHANT_LEVELS.put(LOYALTY, LOYALTY_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.ARROW_DAMAGE, POWER_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.ARROW_FIRE, FLAME_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.ARROW_KNOCKBACK, PUNCH_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.ARROW_INFINITE, INFINITY_LEVEL);
+        MAX_ENCHANT_LEVELS.put(ARROW_DAMAGE, POWER_LEVEL);
+        MAX_ENCHANT_LEVELS.put(ARROW_FIRE, FLAME_LEVEL);
+        MAX_ENCHANT_LEVELS.put(ARROW_KNOCKBACK, PUNCH_LEVEL);
+        MAX_ENCHANT_LEVELS.put(ARROW_INFINITE, INFINITY_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.PIERCING, PIERCING_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.QUICK_CHARGE, QUICK_CHARGE_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.MULTISHOT, MULTISHOT_LEVEL);
+        MAX_ENCHANT_LEVELS.put(PIERCING, PIERCING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(QUICK_CHARGE, QUICK_CHARGE_LEVEL);
+        MAX_ENCHANT_LEVELS.put(MULTISHOT, MULTISHOT_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.DIG_SPEED, EFFICIENCY_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.LOOT_BONUS_BLOCKS, FORTUNE_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.SILK_TOUCH, SILK_TOUCH_LEVEL);
+        MAX_ENCHANT_LEVELS.put(DIG_SPEED, EFFICIENCY_LEVEL);
+        MAX_ENCHANT_LEVELS.put(LOOT_BONUS_BLOCKS, FORTUNE_LEVEL);
+        MAX_ENCHANT_LEVELS.put(SILK_TOUCH, SILK_TOUCH_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.LURE, LURE_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.LUCK, LUCK_OF_THE_SEA_LEVEL);
+        MAX_ENCHANT_LEVELS.put(LURE, LURE_LEVEL);
+        MAX_ENCHANT_LEVELS.put(LUCK, LUCK_OF_THE_SEA_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.PROTECTION_ENVIRONMENTAL, PROTECTION_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.PROTECTION_FIRE, FIRE_PROTECTION_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.PROTECTION_PROJECTILE, PROJECTILE_PROTECTION_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.PROTECTION_EXPLOSIONS, BLAST_PROTECTION_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.PROTECTION_FALL, FEATHER_FALLING_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.THORNS, THORNS_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.SOUL_SPEED, SOUL_SPEED_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.SWIFT_SNEAK, SWIFT_SNEAK_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.DEPTH_STRIDER, DEPTH_STRIDER_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.OXYGEN, RESPIRATION_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.WATER_WORKER, AQUA_AFFINITY_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.FROST_WALKER, FROST_WALKER_LEVEL);
+        MAX_ENCHANT_LEVELS.put(PROTECTION_ENVIRONMENTAL, PROTECTION_LEVEL);
+        MAX_ENCHANT_LEVELS.put(PROTECTION_FIRE, FIRE_PROTECTION_LEVEL);
+        MAX_ENCHANT_LEVELS.put(PROTECTION_PROJECTILE, PROJECTILE_PROTECTION_LEVEL);
+        MAX_ENCHANT_LEVELS.put(PROTECTION_EXPLOSIONS, BLAST_PROTECTION_LEVEL);
+        MAX_ENCHANT_LEVELS.put(PROTECTION_FALL, FEATHER_FALLING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(THORNS, THORNS_LEVEL);
+        MAX_ENCHANT_LEVELS.put(SOUL_SPEED, SOUL_SPEED_LEVEL);
+        MAX_ENCHANT_LEVELS.put(SWIFT_SNEAK, SWIFT_SNEAK_LEVEL);
+        MAX_ENCHANT_LEVELS.put(DEPTH_STRIDER, DEPTH_STRIDER_LEVEL);
+        MAX_ENCHANT_LEVELS.put(OXYGEN, RESPIRATION_LEVEL);
+        MAX_ENCHANT_LEVELS.put(WATER_WORKER, AQUA_AFFINITY_LEVEL);
+        MAX_ENCHANT_LEVELS.put(FROST_WALKER, FROST_WALKER_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.DURABILITY, UNBREAKING_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.MENDING, MENDING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(DURABILITY, UNBREAKING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(MENDING, MENDING_LEVEL);
 
-        MAX_ENCHANT_LEVELS.put(Enchantment.BINDING_CURSE, CURSE_OF_BINDING_LEVEL);
-        MAX_ENCHANT_LEVELS.put(Enchantment.VANISHING_CURSE, CURSE_OF_VANISHING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(BINDING_CURSE, CURSE_OF_BINDING_LEVEL);
+        MAX_ENCHANT_LEVELS.put(VANISHING_CURSE, CURSE_OF_VANISHING_LEVEL);
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.DAMAGE_ALL,
-                Enchantment.DAMAGE_UNDEAD,
-                Enchantment.DAMAGE_ARTHROPODS,
+            DAMAGE_ALL,
+            DAMAGE_UNDEAD,
+            DAMAGE_ARTHROPODS,
         });
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.MENDING,
-                Enchantment.ARROW_INFINITE,
+            MENDING,
+            ARROW_INFINITE,
         });
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.MULTISHOT,
-                Enchantment.PIERCING,
+            MULTISHOT,
+            PIERCING,
         });
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.LOOT_BONUS_BLOCKS,
-                Enchantment.SILK_TOUCH,
+            LOOT_BONUS_BLOCKS,
+            SILK_TOUCH,
         });
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.PROTECTION_ENVIRONMENTAL,
-                Enchantment.PROTECTION_FIRE,
-                Enchantment.PROTECTION_PROJECTILE,
-                Enchantment.PROTECTION_EXPLOSIONS,
+            PROTECTION_ENVIRONMENTAL,
+            PROTECTION_FIRE,
+            PROTECTION_PROJECTILE,
+            PROTECTION_EXPLOSIONS,
         });
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.DEPTH_STRIDER,
-                Enchantment.FROST_WALKER,
+            DEPTH_STRIDER,
+            FROST_WALKER,
         });
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.CHANNELING,
-                Enchantment.RIPTIDE,
+            CHANNELING,
+            RIPTIDE,
         });
 
         INCOMPATIBLE_ENCHANTMENTS.add(new Enchantment[] {
-                Enchantment.LOYALTY,
-                Enchantment.RIPTIDE,
+            LOYALTY,
+            RIPTIDE,
         });
     }
 
