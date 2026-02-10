@@ -12,6 +12,6 @@ BetterAnvils 是一个 Minecraft Spigot 插件，它重新实现了原版铁砧�
 - 更智能的附魔 / 修理 / 重命名逻辑，防止玩家在无意义的操作上浪费材料、工具或经验等级
 
 # 以上纯原作者页面介绍直译
-本分支来源 [lthoerner](https://github.com/lthoerner/betteranvils)
-原作者因未知原因未对此插件进行更新适配
+本分支来源 @[lthoerner](https://github.com/lthoerner/betteranvils) /br
+原作者因未知原因未对此插件进行更新适配 /br
 当前已更新适配至 Minecraft 1.21.1-R0.1-SNAPSHOT 并修复了部分不合理的地方（~~稀碎的史山~~）
