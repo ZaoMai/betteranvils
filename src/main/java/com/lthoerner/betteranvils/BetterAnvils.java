@@ -21,11 +21,11 @@ public final class BetterAnvils extends JavaPlugin implements Listener {
 
         saveDefaultConfig();
 
-        // Register the listener
+        // 注册监听器 — Register the listener
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(this, this);
 
-        // Set the instance
+        // 设置实例引用 — Set the instance
         instance = this;
     }
 

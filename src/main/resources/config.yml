@@ -8,8 +8,8 @@ show-errors: true
 # 所有铁砧操作的绝对最大等级消耗
 max-cost: 256
 
-# 附魔叠加消耗量
-enchant-cost-multiplier: 10
+# 每次附魔消耗的等级叠加
+enchant-cost-multiplier: 8
 
 # 重命名物品的固定消耗
 rename-cost: 1
@@ -40,7 +40,7 @@ max-level.sharpness: 10             # 锋利
 max-level.smite: 10                 # 亡灵杀手
 max-level.bane-of-arthropods: 10    # 节肢杀手
 max-level.knockback: 10             # 击退
-max-level.fire-aspect: 5            # 火焰  
+max-level.fire-aspect: 5            # 火焰附加  
 max-level.looting: 8                # 掠夺
 max-level.sweeping-edge: 5          # 横扫之刃
 
